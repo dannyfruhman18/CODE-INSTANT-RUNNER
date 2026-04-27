@@ -1,0 +1,193 @@
+:root {
+  color-scheme: dark;
+  --bg: #07111f;
+  --panel: rgba(7, 16, 28, 0.72);
+  --accent: #7fe0ff;
+  --accent2: #9eff8f;
+  --danger: #ff6f88;
+  --gold: #ffd65a;
+  --text: #eef6ff;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, #17375a 0%, #07111f 45%, #03060b 100%);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  touch-action: none;
+  user-select: none;
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+}
+
+canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+.hud {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  color: var(--text);
+}
+
+.topbar {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chip,
+.panel {
+  background: var(--panel);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  backdrop-filter: blur(12px);
+}
+
+.chip {
+  padding: 10px 14px;
+  border-radius: 14px;
+  min-width: 92px;
+}
+
+.chip b,
+.panel b {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 4px;
+}
+
+.chip span {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.panel {
+  padding: 14px 16px;
+  border-radius: 18px;
+  max-width: 360px;
+  line-height: 1.45;
+}
+
+.panel .title {
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.panel .copy {
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+}
+
+.centerOverlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 24px 26px;
+  min-width: min(88vw, 420px);
+  border-radius: 24px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+button {
+  pointer-events: auto;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  color: #02111d;
+  background: linear-gradient(135deg, var(--accent), #b3f0ff);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 16px 30px rgba(126, 224, 255, 0.28);
+}
+
+button.secondary {
+  background: linear-gradient(135deg, #d0d7e0, #fbfdff);
+  box-shadow: 0 16px 30px rgba(255,255,255,0.12);
+}
+
+.bottomHint {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(7,16,28,0.5);
+  color: rgba(255,255,255,0.78);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.flash {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.2), rgba(255,255,255,0));
+  transition: opacity 140ms ease;
+}
+
+.flash.on {
+  opacity: 1;
+}
+
+.mobileControls {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  gap: 12px;
+  pointer-events: auto;
+}
+
+.mobileControls button {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  font-size: 18px;
+  background: rgba(255,255,255,0.84);
+}
+
+@media (min-width: 900px) {
+  .mobileControls {
+    display: none;
+  }
+}
